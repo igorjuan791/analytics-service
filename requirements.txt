@@ -7,3 +7,7 @@ urllib3==2.8.0
 setuptools==78.1.1
 wheel==0.46.2
 jaraco.context==6.1.0
+opentelemetry-distro==0.66b2
+opentelemetry-exporter-otlp==1.45.2
+opentelemetry-instrumentation-flask==0.66b2
+opentelemetry-instrumentation-botocore==0.66b2

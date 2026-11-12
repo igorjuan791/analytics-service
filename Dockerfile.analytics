@@ -35,6 +35,11 @@ EXPOSE 8005
 # Define environment variables
 ENV PORT=8005
 ENV PYTHONUNBUFFERED=1
-
+ENV OTEL_SERVICE_NAME=analytics-service
+ENV OTEL_RESOURCE_ATTRIBUTES=service.namespace=toogle-master,deployment.environment=fiap-fase4
+ENV OTEL_TRACES_EXPORTER=otlp
+ENV OTEL_METRICS_EXPORTER=otlp
+ENV OTEL_LOGS_EXPORTER=none
+ENV OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 # Run the application
-CMD ["gunicorn", "-b", "0.0.0.0:8005", "app:app"]
+CMD ["opentelemetry-instrument", "gunicorn", "-b", "0.0.0.0:8005", "app:app"]
