@@ -110,6 +110,7 @@ def handle_message(message):
         log.error(f"Erro inesperado ao processar {message['MessageId']}: {e}")
         # Não deleta a mensagem, tenta novamente
 
+
 def process_message(message):
     """ Cria um span CONSUMER ligado ao trace enviado pelo evaluation-service """
     ctx = propagate.extract(message.get("MessageAttributes", {}), getter=SqsGetter())
